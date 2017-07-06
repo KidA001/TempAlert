@@ -1,0 +1,16 @@
+server.pid
+.DS_Store
+
+# Elastic Beanstalk Files
+.elasticbeanstalk/*
+!.elasticbeanstalk/*.cfg.yml
+!.elasticbeanstalk/*.global.yml
+!.elasticbeanstalk/config.yml
+config/secrets.yml.key
+.rspec
+/log
+/tmp
+/public/system
+/coverage/
+/spec/tmp
+.env
