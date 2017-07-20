@@ -1,0 +1,26 @@
+@mixin override-switchery(
+  $jackBorder: $gray-lightest,
+  $bgUnchecked: $gray-light,
+  $jackUnchecked: $white,
+  $bgChecked: $blue-dark,
+  $jackChecked: $white
+) {
+  & + .switchery {
+    background-color: $bgUnchecked !important;
+    border-color: $bgUnchecked !important;
+    box-shadow: $bgUnchecked 0px 0px 0px 0px inset !important;
+    & > small {
+      border: 1px solid $jackBorder;
+      background-color: $jackUnchecked !important;
+    }
+  }
+
+  &:checked + .switchery {
+    background-color: $bgChecked !important;
+    border-color: $bgChecked !important;
+    box-shadow: $bgChecked 0px 0px 0px 0px inset !important;
+    & > small {
+      background-color: $jackChecked !important;
+    }
+  }
+}

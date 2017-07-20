@@ -1,0 +1,43 @@
+.title {
+  font-size: 80px;
+  line-height: 1em;
+}
+
+.date {
+  font-size: 35px;
+}
+
+.icon {
+  max-width: 50%;
+  margin-top: 20px;
+  @include media-breakpoint-up(lg) {
+    margin-left: 50px;
+    max-width: 320px;
+    margin-top: 0;
+  }
+}
+
+.image-icon {
+  width: 100%;
+  height: 100%;
+}
+
+.temp {
+  font-size: 65px;
+  font-weight: bold;
+  @include media-breakpoint-up(lg) {
+    margin-top: 1em;
+    font-size: 70px;
+    line-height: 1em;
+  }
+}
+
+// .city-selected:hover {
+//   opacity: 0.8;
+// }
+
+// .item-fade{
+//   opacity: 1;
+//   transition: opacity 0.3s;
+//   -webkit-transition: opacity 0.3s;
+// }

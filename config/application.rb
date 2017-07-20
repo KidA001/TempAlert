@@ -10,7 +10,7 @@ require "action_mailer/railtie"
 require "action_view/railtie"
 require "action_cable/engine"
 require "sprockets/railtie"
-# require "rails/test_unit/railtie"
+require "google/api_client/client_secrets"
 
 # Require the gems listed in Gemfile, including any gems
 # you've limited to :test, :development, or :production.
@@ -25,6 +25,7 @@ module TempAlert
     # Application configuration should go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded.
     config.eager_load_paths << Rails.root.join('lib')
+    config.eager_load_paths << Rails.root.join('app/workers')
 
     # Attempt to read encrypted secrets from `config/secrets.yml.enc`.
     # Requires an encryption key in `ENV["RAILS_MASTER_KEY"]` or

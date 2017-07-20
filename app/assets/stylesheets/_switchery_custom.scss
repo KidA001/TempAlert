@@ -1,0 +1,15 @@
+$switchery-bg-height: 14px;
+$switchery-jack-height: 20px;
+
+span.switchery {
+  height: $switchery-bg-height;
+  width: 30px;
+}
+
+span.switchery > small{
+  width: $switchery-jack-height; 
+  height: $switchery-jack-height;
+  top: ($switchery-bg-height - $switchery-jack-height) / 2 - 1px;
+  border: 1px solid #eaeaea;
+  box-shadow: 0 2px 4px 0 rgba(0,0,0,0.5);
+}

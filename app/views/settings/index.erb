@@ -1,0 +1,37 @@
+<div class="card-container">
+  <div class="card item-fade">
+    <div class="text-container">
+      <%= form_tag(settings_path, method: "put") do %>
+        <%= label_tag(:phone) do %>
+          Phone Number
+        <% end %>
+        <%= number_field_tag("phone", @subscriber.phone) %>
+        Ideal Temperature:
+        <%= label_tag(:ideal_temperature) do %>
+          Temperature
+        <% end %>
+        <%= number_field_tag("ideal_temperature", @subscriber.ideal_temperature, min: 100, max: 105) %>
+        <br />
+        <%= label_tag(:sms) do %>
+          SMS
+        <% end %>
+        <%= check_box("ideal_temp[sms]", "disabled", { class: "js-switch", checked: @subscriber.sms?('ideal_temp'), id: "strike-status-checkbox" }, "true", "false") %>
+        <%= label_tag(:email) do %>
+          Email
+        <% end %>
+        <%= check_box("ideal_temp[email]", "enabled", { class: "js-switch", checked: @subscriber.email?('ideal_temp'), id: "strike-status-checkbox" }, "true", "false") %>
+
+        Left On Alert:
+        <%= label_tag(:sms) do %>
+          SMS
+        <% end %>
+        <%= check_box("left_on[sms]", "enabled", { class: "js-switch", checked: @subscriber.sms?('left_on'), id: "strike-status-checkbox" }, "true", "false") %>
+        <%= label_tag(:email) do %>
+          Email
+        <% end %>
+        <%= check_box("left_on[email]", "enabled", { class: "js-switch", checked: @subscriber.email?('left_on'), id: "strike-status-checkbox" }, "true", "false") %>
+        <%= submit_tag("Submit") %>
+      <% end %>
+    </div>
+  </div>
+</div>

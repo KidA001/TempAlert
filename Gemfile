@@ -1,10 +1,5 @@
 source 'https://rubygems.org'
-
-git_source(:github) do |repo_name|
-  repo_name = "#{repo_name}/#{repo_name}" unless repo_name.include?("/")
-  "https://github.com/#{repo_name}.git"
-end
-
+ruby '2.3.3'
 
 gem 'rails', '~> 5.1.2'
 gem 'pg', '~> 0.18'
@@ -14,11 +9,27 @@ gem 'uglifier'
 gem 'turbolinks'
 gem 'jbuilder'
 gem 'redis'
-
+gem 'sidekiq'
+gem 'aws-sdk-rails'
+gem 'sendgrid-ruby'
+gem 'clockwork'
+gem 'bootstrap', git: 'https://github.com/twbs/bootstrap-rubygem'
+gem 'jquery-rails'
+gem 'jquery-ui-rails'
+gem 'google-api-client'
+gem 'httparty'
+gem 'switchery-rails'
 
 group :development, :test do
-  gem 'rspec-rails'
   gem 'pry'
+  gem 'awesome_print'
+  gem 'factory_girl_rails'
+  gem 'faker'
+end
+
+group :test do
+  gem 'shoulda-matchers'
+  gem 'rspec-rails'
 end
 
 group :development do
