@@ -6,8 +6,11 @@ class SettingsController < ApplicationController
   end
 
   def update
-    current_subscriber.update(update_params)
+    current_subscriber.update!(update_params)
+    flash[:success] = "Your settings have been saved <3"
     redirect_to settings_path
+  rescue => e
+    flash[:error] = "Sorry, something is borked"
   end
 
   private
