@@ -25,7 +25,8 @@ class SettingsController < ApplicationController
         }
       },
       ideal_temperature: params[:ideal_temperature].to_i,
-      phone: params[:phone]
+      phone: params[:phone],
+      email: params[:email]
     }
   end
 end
