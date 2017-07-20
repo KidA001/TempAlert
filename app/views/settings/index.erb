@@ -1,36 +1,68 @@
-<div class="card-container">
-  <div class="card item-fade">
-    <div class="text-container">
+<div class="card-container settings-container">
+  <div class="card settings-card">
+    <div class="wat">
+      <div class='heading'>
+        <div class="title">Settings</div>
+        <div class='profile-photo'>
+          <img src="<%= @subscriber.photo_url %>" alt="Profile Photo" height="100" width="100">
+        </div>
+      </div>
+      <hr class='header-hr' />
       <%= form_tag(settings_path, method: "put") do %>
-        <%= label_tag(:phone) do %>
-          Phone Number
-        <% end %>
-        <%= number_field_tag("phone", @subscriber.phone) %>
-        Ideal Temperature:
-        <%= label_tag(:ideal_temperature) do %>
-          Temperature
-        <% end %>
-        <%= number_field_tag("ideal_temperature", @subscriber.ideal_temperature, min: 100, max: 105) %>
-        <br />
-        <%= label_tag(:sms) do %>
-          SMS
-        <% end %>
-        <%= check_box("ideal_temp[sms]", "disabled", { class: "js-switch", checked: @subscriber.sms?('ideal_temp'), id: "strike-status-checkbox" }, "true", "false") %>
-        <%= label_tag(:email) do %>
-          Email
-        <% end %>
-        <%= check_box("ideal_temp[email]", "enabled", { class: "js-switch", checked: @subscriber.email?('ideal_temp'), id: "strike-status-checkbox" }, "true", "false") %>
+        <div class="form-group item-fade selected">
+          <%= label_tag(:phone, class: 'block') do %>
+            Phone Number
+          <% end %>
+          <%= phone_field_tag("phone", @subscriber.phone, required: true, maxlength: 14, placeholder: "(###) ###-####", onkeyup: "phoneInput(event)") %>
+        </div>
+        <hr>
+        <div class="form-group item-fade selected">
+          <%= label_tag(:email, class: 'block') do %>
+            Email
+          <% end %>
+          <%= email_field_tag("email", @subscriber.email, placeholder: 'e.g. you@email.com', required: true) %>
+        </div>
+        <hr>
+        <div class='notif'>
+          <div class='notif-title'>Ideal Temperature Notif:</div>
+          <hr>
+          <div class="form-group">
+            <%= label_tag(:ideal_temperature) do %>
+              Temperature
+            <% end %>
+            <%= number_field_tag("ideal_temperature", @subscriber.ideal_temperature, placeholder: 'e.g. 102', min: 100, max: 105, required: true) %>
+          </div>
+          <div class="form-group">
+            <%= label_tag(:sms) do %>
+              SMS
+            <% end %>
+            <%= check_box("ideal_temp[sms]", "disabled", { class: "js-switch", checked: @subscriber.sms?('ideal_temp'), id: "notif-toggle-checkbox" }, "true", "false") %>
+          </div>
+          <div class="form-group item-fade selected">
+            <%= label_tag(:email) do %>
+              Email
+            <% end %>
+            <%= check_box("ideal_temp[email]", "enabled", { class: "js-switch", checked: @subscriber.email?('ideal_temp'), id: "notif-toggle-checkbox" }, "true", "false") %>
+          </div>
+        </div>
 
-        Left On Alert:
-        <%= label_tag(:sms) do %>
-          SMS
-        <% end %>
-        <%= check_box("left_on[sms]", "enabled", { class: "js-switch", checked: @subscriber.sms?('left_on'), id: "strike-status-checkbox" }, "true", "false") %>
-        <%= label_tag(:email) do %>
-          Email
-        <% end %>
-        <%= check_box("left_on[email]", "enabled", { class: "js-switch", checked: @subscriber.email?('left_on'), id: "strike-status-checkbox" }, "true", "false") %>
-        <%= submit_tag("Submit") %>
+        <div class='notif'>
+          <div class='notif-title'>Left On Notif:</div>
+          <hr>
+          <div class="form-group">
+            <%= label_tag(:sms) do %>
+              SMS
+            <% end %>
+            <%= check_box("left_on[sms]", "enabled", { class: "js-switch", checked: @subscriber.sms?('left_on'), id: "notif-toggle-checkbox" }, "true", "false") %>
+          </div>
+          <div class="form-group">
+            <%= label_tag(:email) do %>
+              Email
+            <% end %>
+            <%= check_box("left_on[email]", "enabled", { class: "js-switch", checked: @subscriber.email?('left_on'), id: "notif-toggle-checkbox" }, "true", "false") %>
+          </div>
+        </div>
+        <%= submit_tag("Save", { class: 'btn btn-info settings-save-btn' }) %>
       <% end %>
     </div>
   </div>

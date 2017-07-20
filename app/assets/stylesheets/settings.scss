@@ -2,6 +2,93 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-#strike-status-checkbox {
-  @include override-switchery();
+// #notif-toggle-checkbox {
+//   @include override-switchery();
+// }
+
+.settings-container {
+  padding: 30px;
+}
+
+.settings-card {
+  color: black !important;
+  background: white !important;
+  box-sizing: inherit;
+}
+
+label {
+  font-size: 35px;
+  font-weight: 400;
+  color: #515151;
+}
+
+.heading {
+  display: flex;
+  justify-content: space-between;
+  font-size: 80px;
+  line-height: 1em;
+  align-items: center;
+}
+
+.header-hr {
+  margin-bottom: 20%
+}
+
+.profile-photo {
+  // float: right;
+  margin-bottom: 10px;
+}
+
+#email, #phone {
+  height: 60px;
+  width: 350px;
+  font-size: 30px;
+  border: none;
+  color: #959393;
+}
+
+#ideal_temperature {
+  height: 60px;
+  width: 110px;
+  font-size: 30px;
+  border: none;
+  color: #959393;
+  text-align: right;
+}
+
+.block {
+  display: block;
+}
+
+.switchery-large, #ideal_temperature {
+  float: right;
+}
+
+.notif {
+  margin-top: 20%;
+}
+
+.notif-title {
+  font-size: 50px;
+  font-weight: 300;
+  // text-align: center;
+  margin-bottom: 20px;
+}
+
+
+.selected:hover {
+  opacity: 0.5;
+}
+
+.item-fade{
+  opacity: 1;
+  transition: opacity 0.3s;
+  -webkit-transition: opacity 0.3s;
+}
+
+.settings-save-btn {
+  font-size: 40px;
+  width: 170px;
+  float: right;
+  margin-top: 40px
 }
