@@ -6,37 +6,70 @@
 //   @include override-switchery();
 // }
 
-.settings-container {
+.card-container.settings-container {
   padding: 30px;
+  @include media-breakpoint-up(lg) {
+    align-items: flex-start;
+  }
 }
 
-.settings-card {
-  color: black !important;
-  background: white !important;
+.card.settings-card {
+  color: black;
+  background: white;
   box-sizing: inherit;
+  @include media-breakpoint-up(lg) {
+    padding: 30px 90px;
+  }
 }
 
 label {
   font-size: 35px;
   font-weight: 400;
   color: #515151;
+  @include media-breakpoint-up(lg) {
+    font-size: 25px;
+    font-weight: 300;
+  }
+}
+
+.wat {
+  @include media-breakpoint-up(lg) {
+    width: 100%;
+  }
 }
 
 .heading {
   display: flex;
   justify-content: space-between;
-  font-size: 80px;
   line-height: 1em;
   align-items: center;
+  @include media-breakpoint-up(lg) {
+  }
+}
+
+.title {
+  @include media-breakpoint-up(lg) {
+    font-size: 40px;
+  }
 }
 
 .header-hr {
-  margin-bottom: 20%
+  margin-bottom: 20%;
+  @include media-breakpoint-up(lg) {
+    margin-bottom: 10%;
+  }
 }
 
 .profile-photo {
-  // float: right;
-  margin-bottom: 10px;
+}
+
+.profile-photo img {
+  height: 100px;
+  width: 100px;
+  @include media-breakpoint-up(lg) {
+    height: 75px;
+    width: 75px;
+  }
 }
 
 #email, #phone {
@@ -45,6 +78,11 @@ label {
   font-size: 30px;
   border: none;
   color: #959393;
+  @include media-breakpoint-up(lg) {
+    height: 40px;
+    width: 250px;
+    font-size: 20px;
+  }
 }
 
 #ideal_temperature {
@@ -54,6 +92,11 @@ label {
   border: none;
   color: #959393;
   text-align: right;
+  @include media-breakpoint-up(lg) {
+    height: 40px;
+    width: 250px;
+    font-size: 20px;
+  }
 }
 
 .block {
@@ -66,13 +109,18 @@ label {
 
 .notif {
   margin-top: 20%;
+  @include media-breakpoint-up(lg) {
+    margin-top: 10%;
+  }
 }
 
 .notif-title {
   font-size: 50px;
-  font-weight: 300;
-  // text-align: center;
+  font-weight: 400;
   margin-bottom: 20px;
+  @include media-breakpoint-up(lg) {
+    font-size: 25px;
+  }
 }
 
 
@@ -90,7 +138,11 @@ label {
   font-size: 40px;
   width: 170px;
   float: right;
-  margin-top: 40px
+  margin-top: 40px;
+  @include media-breakpoint-up(lg) {
+    font-size: 20px;
+    width: 130px;
+  }
 }
 
 .alert {
