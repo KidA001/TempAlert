@@ -1,5 +1,6 @@
 module Notification
   class LeftOn < NotificationBase
+    include ActionView::Helpers::DateHelper
     attr_reader :temperature, :time
 
     def initialize(temperature, time)
@@ -20,7 +21,7 @@ module Notification
     end
 
     def sms_body
-      "Hot has been over #{temperature} for #{time.to_words}"
+      "Hot has been over #{temperature} for #{distance_of_time_in_words(time, Time.now)}"
     end
 
     def key
@@ -36,7 +37,7 @@ module Notification
     end
 
     def email_subject
-      "Hot tub has been left on for #{time.to_words}!"
+      "Hot tub has been left on for #{distance_of_time_in_words(time, Time.now)}!"
     end
 
     private
