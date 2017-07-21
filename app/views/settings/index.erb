@@ -38,7 +38,7 @@
             <% end %>
             <%= check_box("ideal_temp[sms]", "disabled", { class: "js-switch", checked: @subscriber.sms?('ideal_temp'), id: "notif-toggle-checkbox" }, "true", "false") %>
           </div>
-          <div class="form-group item-fade selected">
+          <div class="form-group">
             <%= label_tag(:email) do %>
               Email
             <% end %>
