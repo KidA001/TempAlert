@@ -32,7 +32,7 @@ module Notification
     end
 
     def email_body
-      ""
+      " "
     end
 
     def email_subject
