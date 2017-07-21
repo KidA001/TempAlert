@@ -3,6 +3,8 @@ class SettingsController < ApplicationController
 
   def index
     @subscriber = current_subscriber
+  rescue => e
+    Notice.error(e)
   end
 
   def update
@@ -10,7 +12,9 @@ class SettingsController < ApplicationController
     flash[:success] = "Your settings have been saved <3"
     redirect_to settings_path
   rescue => e
+    Notice.error(e)
     flash[:error] = "Sorry, something is borked"
+    redirect_to settings_path
   end
 
   private

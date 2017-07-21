@@ -18,3 +18,11 @@
 //= require bootstrap
 //= require switchery
 //= require_tree .
+
+$(document).on('turbolinks:load', function() {
+  $.each($('.alert'), function( index, value ) {
+    setTimeout(function() {
+      $(value).fadeOut('slow')
+    }, 5000);
+  });
+});

@@ -30,10 +30,4 @@ $(document).on('turbolinks:load', function() {
   $('.js-switch').each(function(index, elem) {
     var init = new Switchery(elem, { size: 'large', secondaryColor: '#efefef', speed: '0.5s' });
   });
-
-  $.each($('.alert'), function( index, value ) {
-    setTimeout(function() {
-      $(value).fadeOut('slow')
-    }, 5000);
-  });
 });

@@ -60,3 +60,17 @@ body {
     min-height: 476px;
   }
 }
+
+.alert {
+  height: 85px;
+  position: absolute;
+  z-index: 1;
+  width: 100%;
+}
+
+.alert-text {
+  text-align: center;
+  font-size: 30px;
+  font-size: 30px;
+  font-weight: 400;
+}
