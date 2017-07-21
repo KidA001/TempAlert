@@ -26,8 +26,9 @@ function setInputValue(input, value) {
 
 $(document).on('turbolinks:load', function() {
   var phone = document.getElementById("phone")
-  if (!phone) return;
-  formatPhoneInput(document.getElementById("phone"));
+  if (!!phone) {
+    formatPhoneInput(document.getElementById("phone"));
+  };
 
   $('.js-switch').each(function(index, elem) {
     var init = new Switchery(elem, { size: 'large', secondaryColor: '#efefef', speed: '0.5s' });
