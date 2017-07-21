@@ -3,8 +3,6 @@ class Subscriber < ApplicationRecord
   validates :name, presence: true
   validates :email, presence: true
 
-  before_save { self.phone = Phoner::Phone.parse(self.phone).to_s }
-
   def sms?(notif)
     !!subscriptions.dig(notif, 'sms')
   end

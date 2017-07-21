@@ -28,7 +28,7 @@ class SettingsController < ApplicationController
         }
       },
       ideal_temperature: params[:ideal_temperature].to_i,
-      phone: params[:phone],
+      phone: Phoner::Phone.parse(params[:phone]).format("%a%n"),
       email: params[:email]
     }
   end
