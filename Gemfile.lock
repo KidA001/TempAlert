@@ -53,15 +53,6 @@ GEM
     autoprefixer-rails (7.1.2.3)
       execjs
     awesome_print (1.7.0)
-    aws-sdk-core (2.10.7)
-      aws-sigv4 (~> 1.0)
-      jmespath (~> 1.0)
-    aws-sdk-rails (1.0.1)
-      aws-sdk-resources (~> 2)
-      railties (>= 3)
-    aws-sdk-resources (2.10.7)
-      aws-sdk-core (= 2.10.7)
-    aws-sigv4 (1.0.0)
     bindex (0.5.0)
     builder (3.2.3)
     clockwork (2.0.2)
@@ -109,7 +100,6 @@ GEM
     jbuilder (2.7.0)
       activesupport (>= 4.2.0)
       multi_json (>= 1.2)
-    jmespath (1.3.1)
     jquery-rails (4.3.1)
       rails-dom-testing (>= 1, < 3)
       railties (>= 4.2.0)
@@ -117,6 +107,7 @@ GEM
     jquery-ui-rails (6.0.1)
       railties (>= 3.2.16)
     jwt (1.5.6)
+    libxml-ruby (3.0.0)
     listen (3.1.5)
       rb-fsevent (~> 0.9, >= 0.9.4)
       rb-inotify (~> 0.9, >= 0.9.7)
@@ -259,6 +250,10 @@ GEM
     turbolinks (5.0.1)
       turbolinks-source (~> 5)
     turbolinks-source (5.0.3)
+    twilio-ruby (5.0.0)
+      faraday (~> 0.9)
+      jwt (~> 1.5)
+      libxml-ruby (= 3.0.0)
     tzinfo (1.2.3)
       thread_safe (~> 0.1)
     uber (0.1.0)
@@ -278,7 +273,6 @@ PLATFORMS
 
 DEPENDENCIES
   awesome_print
-  aws-sdk-rails
   bootstrap!
   clockwork
   factory_girl_rails
@@ -305,6 +299,7 @@ DEPENDENCIES
   spring-watcher-listen (~> 2.0.0)
   switchery-rails
   turbolinks
+  twilio-ruby
   tzinfo-data
   uglifier
   web-console (>= 3.3.0)

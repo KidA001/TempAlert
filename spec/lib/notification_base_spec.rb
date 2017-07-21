@@ -10,6 +10,8 @@ describe Notification::NotificationBase do
     allow(subject).to receive(:email_subject) { email_subject }
     allow(subject).to receive(:email_body) { email_body }
     allow(subject).to receive(:subscribers) { [subscriber] }
+    allow(SMS).to receive(:send) # stubbing so SMS don't go out
+    allow(Email).to receive(:send) # stubbing so Emails don't go out
   end
   let(:subject) { Notification::MockNotif.new }
   let(:key) { notif_name }
