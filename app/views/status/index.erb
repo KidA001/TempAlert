@@ -5,8 +5,13 @@
     </div>
     <div class="text-container">
       <div class="title">SOMA Tub</div>
-      <div class="date"><%= @current_record.recorded_at.in_time_zone("Pacific Time (US & Canada)").strftime("%a %B #{@current_record.recorded_at.day.ordinalize} at %l:%M%p") %></div>
-      <div class="temp"><%= @current_record.temperature.to_i %>°</div>
+      <% if @current_record.present? %>
+        <div class="date"><%= @current_time.strftime("%a %B #{@current_time.day.ordinalize} at %l:%M%p") %></div>
+        <div class="temp"><%= @current_record.temperature.to_i %>°</div>
+        <% else %>
+          <div class="date"><%= @current_time.strftime("%a %B #{@current_time.day.ordinalize} at %l:%M%p") %></div>
+          <div class="no-temp">Sorry, current temperature isn't available</div>
+      <% end %>
     </div>
 
     <div class="time-of-day-icon">
