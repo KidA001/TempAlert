@@ -25,6 +25,8 @@ function setInputValue(input, value) {
 };
 
 $(document).on('turbolinks:load', function() {
+  var phone = document.getElementById("phone")
+  if (!phone) return;
   formatPhoneInput(document.getElementById("phone"));
 
   $('.js-switch').each(function(index, elem) {
