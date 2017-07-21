@@ -1,0 +1,11 @@
+machine:
+  ruby:
+    version: 2.4.1
+  services:
+    - redis
+
+deployment:
+  production:
+    branch: master
+    heroku:
+      appname: tempalert
