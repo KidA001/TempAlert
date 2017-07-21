@@ -134,11 +134,24 @@ label {
   -webkit-transition: opacity 0.3s;
 }
 
+.buttons {
+  justify-content: space-between;
+  display:flex;
+  margin-top: 60px;
+}
+
 .settings-save-btn {
   font-size: 40px;
   width: 170px;
-  float: right;
-  margin-top: 40px;
+  @include media-breakpoint-up(lg) {
+    font-size: 20px;
+    width: 130px;
+  }
+}
+
+.settings-back-btn {
+  font-size: 40px;
+  width: 170px;
   @include media-breakpoint-up(lg) {
     font-size: 20px;
     width: 130px;

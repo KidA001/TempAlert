@@ -62,7 +62,10 @@
             <%= check_box("left_on[email]", "enabled", { class: "js-switch", checked: @subscriber.email?('left_on'), id: "notif-toggle-checkbox" }, "true", "false") %>
           </div>
         </div>
-        <%= submit_tag("Save", { class: 'btn btn-info settings-save-btn' }) %>
+        <div class="buttons">
+          <%= link_to "Back", root_path, class: "btn btn-info settings-back-btn" %>
+          <%= submit_tag("Save", { class: 'btn btn-info settings-save-btn' }) %>
+        </div>
       <% end %>
     </div>
   </div>
