@@ -20,7 +20,7 @@ module Notification
     end
 
     def sms_body
-      "Hot tub is at #{temperature}"
+      "✨Hot tub is at #{temperature.to_i}✨"
     end
 
     def key
@@ -32,11 +32,11 @@ module Notification
     end
 
     def email_body
-      sms_body
+      ""
     end
 
     def email_subject
-      'Hot tub is hot!'
+      sms_body
     end
 
     private
