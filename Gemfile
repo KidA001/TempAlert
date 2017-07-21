@@ -20,6 +20,7 @@ gem 'google-api-client'
 gem 'httparty'
 gem 'switchery-rails'
 gem 'phone'
+gem 'newrelic_rpm'
 
 group :development, :test do
   gem 'pry'
