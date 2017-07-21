@@ -33,6 +33,7 @@ label {
 }
 
 .wat {
+  min-width: 550px;
   @include media-breakpoint-up(lg) {
     width: 100%;
   }
@@ -156,4 +157,16 @@ label {
     font-size: 20px;
     width: 130px;
   }
+}
+
+.notif-heading {
+  display: flex;
+  justify-content: space-between;
+}
+
+.question-image {
+  margin-top: 15px;
+  // margin-left: 25px;
+  width: 40px;
+  height: 40px;
 }

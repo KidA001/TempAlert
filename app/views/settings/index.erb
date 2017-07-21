@@ -24,7 +24,10 @@
         </div>
         <hr>
         <div class='notif'>
-          <div class='notif-title'>Ideal Temperature Notif:</div>
+          <div class='notif-heading'>
+            <div class='notif-title'>Ideal Temp Notif</div>
+            <%= image_tag "question.png", class: "question-image pop", tabindex: 0, data: {content: "Set your 'Ideal Temperature' and get a notification once the hot tub reaches that temperature. Only 1-notif per day.", toggle: "popover", trigger: "focus", placement: "left", "original-title" => "Ideal Temperature Notif"} %>
+          </div>
           <hr>
           <div class="form-group">
             <%= label_tag(:ideal_temperature) do %>
@@ -47,7 +50,10 @@
         </div>
 
         <div class='notif'>
-          <div class='notif-title'>Left On Notif:</div>
+          <div class='notif-heading'>
+            <div class='notif-title'>Left On Notif</div>
+            <%= image_tag "question.png", class: "question-image pop", tabindex: 0, data: {content: "When the hot tub has been left on for too long, this notification will go out. You can choose to be selected by SMS, Email or both!", toggle: "popover", placement: "left", trigger: "focus", "original-title" => "Hot Tub Left On"} %>
+          </div>
           <hr>
           <div class="form-group">
             <%= label_tag(:sms) do %>
