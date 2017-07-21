@@ -1,6 +1,10 @@
 function phoneInput(event) {
   if (event.keyCode == 8) return;
-  var phoneString = event.currentTarget.value.replace(/\D/g, "");
+  formatPhoneInput(event.currentTarget);
+};
+
+function formatPhoneInput(target) {
+  var phoneString = target.value.replace(/\D/g, "");
 
   if (phoneString.length >= 6) {
     phoneString = phoneString.substr(0,6) + "-" + phoneString.substr(6);
@@ -10,8 +14,8 @@ function phoneInput(event) {
     phoneString = "(" + phoneString.substr(0,3) + ") " + phoneString.substr(3);
   }
 
-  setInputValue(event.currentTarget, phoneString);
-};
+  setInputValue(target, phoneString);
+}
 
 function setInputValue(input, value) {
   var startOffset = input.value.length - input.selectionStart;
@@ -21,6 +25,8 @@ function setInputValue(input, value) {
 };
 
 $(document).on('turbolinks:load', function() {
+  formatPhoneInput(document.getElementById("phone"));
+
   $('.js-switch').each(function(index, elem) {
     var init = new Switchery(elem, { size: 'large', secondaryColor: '#efefef', speed: '0.5s' });
   });
