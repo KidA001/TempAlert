@@ -76,7 +76,7 @@ void httpRequest(String temp) {
   if (client.connect(server, 80)) {
     Serial.println("connecting...");
     client.println(request);
-    client.println("Authorization: Token FyyAwAjTDoK6WXRDYFBUcJEG");
+    client.println("Authorization: Token {AUTHCODE HERE}");
     client.println("Host: a7905c9d.ngrok.io");
     client.println("User-Agent: ArduinoWiFi/1.1");
     client.println("Connection: close");
