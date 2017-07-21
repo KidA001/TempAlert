@@ -13,7 +13,7 @@
           <%= label_tag(:phone, class: 'block') do %>
             Phone Number
           <% end %>
-          <%= phone_field_tag("phone", @subscriber.phone, required: true, maxlength: 14, placeholder: "(###) ###-####", onkeyup: "phoneInput(event)") %>
+          <%= phone_field_tag("phone", @subscriber.phone, required: true, maxlength: 14, pattern: ".{14}", placeholder: "(###) ###-####", onkeyup: "phoneInput(event)") %>
         </div>
         <hr>
         <div class="form-group item-fade selected">

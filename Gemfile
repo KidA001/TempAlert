@@ -19,6 +19,7 @@ gem 'jquery-ui-rails'
 gem 'google-api-client'
 gem 'httparty'
 gem 'switchery-rails'
+gem 'phone'
 
 group :development, :test do
   gem 'pry'

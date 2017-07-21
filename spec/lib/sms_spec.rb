@@ -6,7 +6,7 @@ describe SMS do
 
 
   describe '#send' do
-    let(:phone_number) { '14158675309' }
+    let(:phone_number) { build(:subscriber).phone }
     let(:message) { 'hello' }
 
     it 'calls publish on AWS client with correct params' do
