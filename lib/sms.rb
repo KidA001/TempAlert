@@ -3,15 +3,11 @@ module SMS
   FROM = '+15103691553'
 
   def self.send(phone_number, message)
-    client.api.account.messages.create(
+    TWILIO.api.account.messages.create(
       from: FROM,
       to: valid_number(phone_number),
       body: message
     )
-  end
-
-  def self.client
-    Twilio::REST::Client.new
   end
 
   def self.valid_number(number)
