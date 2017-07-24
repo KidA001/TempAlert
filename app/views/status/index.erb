@@ -8,12 +8,11 @@
       <% if @current_record.present? %>
         <div class="date"><%= @current_time.strftime("%a %B #{@current_time.day.ordinalize} at %l:%M%p") %></div>
         <div class="temp"><%= @current_record.temperature.to_i %>°</div>
-        <% else %>
-          <div class="date"><%= @current_time.strftime("%a %B #{@current_time.day.ordinalize} at %l:%M%p") %></div>
-          <div class="no-temp">Sorry, current temperature isn't available</div>
+      <% else %>
+        <div class="date"><%= @current_time.strftime("%a %B #{@current_time.day.ordinalize} at %l:%M%p") %></div>
+        <div class="no-temp">Sorry, current temperature isn't available</div>
       <% end %>
     </div>
-
     <div class="time-of-day-icon">
       <% if @daytime %>
         <%= image_tag "day.png", class: "time-of-day-icon-image" %>
