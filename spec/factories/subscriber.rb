@@ -12,8 +12,8 @@ FactoryGirl.define do
       subscriptions {{ ideal_temp: { sms: true, email: true } }}
     end
 
-    trait :left_on_subscription do
-      subscriptions {{ left_on: { sms: true, email: true } }}
+    trait :extended_use_subscription do
+      subscriptions {{ extended_use: { sms: true, email: true } }}
     end
   end
 end

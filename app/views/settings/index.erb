@@ -59,13 +59,13 @@
             <%= label_tag(:sms) do %>
               SMS
             <% end %>
-            <%= check_box("left_on[sms]", "enabled", { class: "js-switch", checked: @subscriber.sms?('left_on'), id: "notif-toggle-checkbox" }, "true", "false") %>
+            <%= check_box("extended_use[sms]", "enabled", { class: "js-switch", checked: @subscriber.sms?('extended_use'), id: "notif-toggle-checkbox" }, "true", "false") %>
           </div>
           <div class="form-group">
             <%= label_tag(:email) do %>
               Email
             <% end %>
-            <%= check_box("left_on[email]", "enabled", { class: "js-switch", checked: @subscriber.email?('left_on'), id: "notif-toggle-checkbox" }, "true", "false") %>
+            <%= check_box("extended_use[email]", "enabled", { class: "js-switch", checked: @subscriber.email?('extended_use'), id: "notif-toggle-checkbox" }, "true", "false") %>
           </div>
         </div>
         <div class="buttons">

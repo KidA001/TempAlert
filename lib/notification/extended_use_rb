@@ -1,5 +1,5 @@
 module Notification
-  class LeftOn < NotificationBase
+  class ExtendedUse < NotificationBase
     include ActionView::Helpers::DateHelper
     attr_reader :temperature, :time
 
@@ -13,7 +13,7 @@ module Notification
     end
 
     def notif
-      'left_on'
+      'extended_use'
     end
 
     def ready_to_send?

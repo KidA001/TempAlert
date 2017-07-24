@@ -8,6 +8,6 @@ module Clockwork
   end
 
   every 30.minutes, '30 minute.jobs' do
-    LeftOnWorker.perform_async
+    ExtendedUseWorker.perform_async
   end
 end

@@ -26,9 +26,9 @@ class SettingsController < ApplicationController
           sms: params[:ideal_temp][:sms].values.include?('true'),
           email: params[:ideal_temp][:email].values.include?('true')
         },
-        'left_on' => {
-          sms: params[:left_on][:sms].values.include?('true'),
-          email: params[:left_on][:email].values.include?('true')
+        'extended_use' => {
+          sms: params[:extended_use][:sms].values.include?('true'),
+          email: params[:extended_use][:email].values.include?('true')
         }
       },
       ideal_temperature: params[:ideal_temperature].to_i,
