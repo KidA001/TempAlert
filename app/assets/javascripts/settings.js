@@ -33,15 +33,4 @@ $(document).on('turbolinks:load', function() {
   $('.js-switch').each(function(index, elem) {
     var init = new Switchery(elem, { size: 'large', secondaryColor: '#efefef', speed: '0.5s' });
   });
-
-  // Popover settings
-  $('[data-toggle="popover"]').popover();
-  // Dismisses popver when user clicks elsewhere
-  $('body').on('click', function (e) {
-    $('[data-toggle="popover"]').each(function () {
-      if (!$(this).is(e.target) && $(this).has(e.target).length === 0 && $('.popover').has(e.target).length === 0) {
-        $(this).popover('hide');
-      }
-    });
-  });
 });
