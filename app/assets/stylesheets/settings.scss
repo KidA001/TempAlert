@@ -33,7 +33,7 @@ label {
 }
 
 .wat {
-  min-width: 550px;
+  width: 600px;
   @include media-breakpoint-up(lg) {
     width: 100%;
   }
@@ -55,9 +55,9 @@ label {
 }
 
 .header-hr {
-  margin-bottom: 20%;
+  margin-bottom: 8%;
   @include media-breakpoint-up(lg) {
-    margin-bottom: 10%;
+    margin-bottom: 5%;
   }
 }
 
@@ -67,6 +67,7 @@ label {
 .profile-photo img {
   height: 100px;
   width: 100px;
+  border-radius: 50%;
   @include media-breakpoint-up(lg) {
     height: 75px;
     width: 75px;
@@ -109,9 +110,9 @@ label {
 }
 
 .notif {
-  margin-top: 20%;
+  margin-top: 10%;
   @include media-breakpoint-up(lg) {
-    margin-top: 10%;
+    margin-top: 5%;
   }
 }
 
@@ -161,5 +162,10 @@ label {
 
 .notif-heading {
   display: flex;
-  justify-content: space-between;
+  flex-direction: column;
+}
+
+.notif-description {
+  font-size: 25px;
+  color: gray;
 }
