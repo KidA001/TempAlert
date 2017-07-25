@@ -12,7 +12,7 @@ describe SMS do
     let(:phone_number) { build(:subscriber).phone }
     let(:message) { 'hello' }
 
-    it 'calls publish on AWS client with correct params' do
+    it 'calls publish on Twilio client with correct params' do
       expect(client).to receive(:create).with(
         from: described_class::FROM,
         to: '+1'+phone_number,
