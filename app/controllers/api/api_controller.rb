@@ -1,6 +1,5 @@
 class API::ApiController < ActionController::API
   include ActionController::HttpAuthentication::Token::ControllerMethods
-  include JSONErrors
   before_action :authenticate!
 
   private
