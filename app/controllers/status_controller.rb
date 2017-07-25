@@ -4,6 +4,6 @@ class StatusController < ApplicationController
   def index
     @current_time = Time.now.in_time_zone("Pacific Time (US & Canada)")
     @daytime = @current_time.daytime?
-    @current_record = Record.current || Record.new(temperature: 103, recorded_at: Time.now)
+    @current_record = Record.current
   end
 end

@@ -63,13 +63,20 @@
 
 
 .no-temp {
-  margin-top: 30px;
+  margin-top: 70px;
   font-size: 45px;
-  font-weight: bold;
   @include media-breakpoint-up(lg) {
+    font-weight: bold;
     margin-top: 1em;
     font-size: 30px;
     line-height: 1em;
+  }
+}
+
+.shrug {
+  font-size: 55px;
+  @include media-breakpoint-up(lg) {
+    font-size: 40px;
   }
 }
 
