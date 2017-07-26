@@ -8,6 +8,6 @@ class API::WebhooksController < API::ApiController
   private
 
   def record_params
-    { temerature: params[:temerature].to_f, recorded_at: DateTime.now }
+    { temperature: params[:temperature].to_f, recorded_at: DateTime.now }
   end
 end
