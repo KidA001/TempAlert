@@ -1,147 +1,75 @@
-
+#include "config.h"
 #include <SPI.h>
 #include <WiFi101.h>
 #include <string.h>
 #include <stdlib.h>
+#include <OneWire.h>
+#include <DallasTemperature.h>
 
-char ssid[] = "spruce-home";    //  your network SSID (name)
-char pass[] = "homehome";       // your network password
-int status = WL_IDLE_STATUS;    // the WiFi radio's status
-
-
-// Initialize the WiFi client library
+//WiFi Client Setup
+int status = WL_IDLE_STATUS;
 WiFiClient client;
 
-// server address:
-char server[] = "http://a7905c9d.ngrok.io";
+// Setup for temperature sensor
+#define ONE_WIRE_BUS A5
+OneWire oneWire(ONE_WIRE_BUS);
+DallasTemperature sensors(&oneWire);
+DeviceAddress insideThermometer;
+
 
 void setup() {
-  //Initialize serial and wait for port to open:
   Serial.begin(9600);
   WiFi.setPins(8,2,A3,-1);
-  while (!Serial) {
-    Serial.println("Waiting for serial");
-  }
-
-  //Connect to wifi shield
-  if (WiFi.status() == WL_NO_SHIELD) {
-    Serial.println("WiFi shield not present");
-    // don't continue:
-    while (true);
-  }
-
-  //Attempt to connect to WiFi network:
-  while ( status != WL_CONNECTED) {
-    Serial.print("Attempting to connect to WPA SSID: ");
-    Serial.println(ssid);
-    status = WiFi.begin(ssid, pass);
-
-    delay(10000);
-  }
-
-  Serial.print("You're connected to the network");
-  printCurrentNet();
-  printWiFiData();
+  connectWifiShield();
+  wifiConnect();
+  sensors.begin();
 }
 
 void loop() {
-  // Measure the temperature
-  int sensorValue = analogRead(A4);
-  float milliVoltsValue = sensorValue * 5000. / 1024.;
-  float temperature = (milliVoltsValue - 500.)/10.;
-
-  // Print the temperature
- Serial.println(temperature);
-  
-  // Transform to string
+  sensors.requestTemperatures();
+  int temperature = (((sensors.getTempCByIndex(0) * 9.)/5.)+32.);
+  Serial.println(temperature);
   char temp[5];
   dtostrf(temperature,5,2,temp);
+  
+  httpRequest(temp);
+  delay(60000); //1min
+}
 
-  //Print out last response from server
+void connectWifiShield() {
+  if (WiFi.status() == WL_NO_SHIELD) {
+    while (true);
+  }
+}
+
+void httpRequest(String temp) {
   while (client.available()) {
     char c = client.read();
     Serial.write(c);
   }
+  String request = "POST /api/webhooks/temp?temperature=" + temp + " HTTP/1.1\r\n"
+                   "Authorization: Token " + authToken + "\r\n"
+                   "Host: hottub.somahouse.family\r\n"
+                   "Connection: close\r\n";
 
-  httpRequest(temp);
-  delay(300000); // 5min
-}
-
-void httpRequest(String temp) {
-  // close any connection before send a new request to free up socket
-  client.stop();
-  String request = "POST /api/webhooks/temp?temperature=" + temp + " HTTP/1.1";
-
-  // if there's a successful connection:
   if (client.connect(server, 80)) {
-    Serial.println("connecting...");
     client.println(request);
-    client.println("Authorization: Token FyyAwAjTDoK6WXRDYFBUcJEG");
-    client.println("Host: a7905c9d.ngrok.io");
-    client.println("User-Agent: ArduinoWiFi/1.1");
-    client.println("Connection: close");
     client.println();
   }
   else {
-    Serial.println("Connection failed");
+    Serial.println(F("Connection failed"));
   }
+  client.stop();
+  WiFi.end();
+  delay(10);
+  WiFi.begin(ssid, pass);
 }
 
-void printWiFiData() {
-  // print your WiFi shield's IP address:
-  IPAddress ip = WiFi.localIP();
-  Serial.print("IP Address: ");
-  Serial.println(ip);
-  Serial.println(ip);
-
-  // print your MAC address:
-  byte mac[6];
-  WiFi.macAddress(mac);
-  Serial.print("MAC address: ");
-  Serial.print(mac[5], HEX);
-  Serial.print(":");
-  Serial.print(mac[4], HEX);
-  Serial.print(":");
-  Serial.print(mac[3], HEX);
-  Serial.print(":");
-  Serial.print(mac[2], HEX);
-  Serial.print(":");
-  Serial.print(mac[1], HEX);
-  Serial.print(":");
-  Serial.println(mac[0], HEX);
-
-}
-
-void printCurrentNet() {
-  // print the SSID of the network you're attached to:
-  Serial.print("SSID: ");
-  Serial.println(WiFi.SSID());
-
-  // print the MAC address of the router you're attached to:
-  byte bssid[6];
-  WiFi.BSSID(bssid);
-  Serial.print("BSSID: ");
-  Serial.print(bssid[5], HEX);
-  Serial.print(":");
-  Serial.print(bssid[4], HEX);
-  Serial.print(":");
-  Serial.print(bssid[3], HEX);
-  Serial.print(":");
-  Serial.print(bssid[2], HEX);
-  Serial.print(":");
-  Serial.print(bssid[1], HEX);
-  Serial.print(":");
-  Serial.println(bssid[0], HEX);
-
-  // print the received signal strength:
-  long rssi = WiFi.RSSI();
-  Serial.print("signal strength (RSSI):");
-  Serial.println(rssi);
-
-  // print the encryption type:
-  byte encryption = WiFi.encryptionType();
-  Serial.print("Encryption Type:");
-  Serial.println(encryption, HEX);
-  Serial.println();
+void wifiConnect() {
+  while ( status != WL_CONNECTED) {
+    status = WiFi.begin(ssid, pass);
+    delay(1000);
+  }
+  Serial.println("Connected to WiFi");
 }
 

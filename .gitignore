@@ -17,3 +17,4 @@ config/secrets.yml.key
 
 # Ignore encrypted secrets key file.
 config/secrets.yml.key
+arduino/config.h
