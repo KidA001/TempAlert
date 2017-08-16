@@ -32,7 +32,7 @@ TempAlert is an application that receives temperature notifications from an outs
 ## Other Notes
 The [Arduino.ico](https://github.com/KidA001/TempAlert/tree/master/arduino) file contains the Arduino code I used to for the temperature sensor that connects and sends temperatures to this server. I used the following parts: [TinyDuino Processor](https://tinycircuits.com/collections/processors/products/tinyduino-processor-board) as the main Arduino board, [USB TinyShield](https://tinycircuits.com/collections/communication/products/usb-tinyshield) which allows me to connect/power the Arduino via USB, [WIFI TinyShield](https://tinycircuits.com/collections/communication/products/wifi-tinyshield-atwinc1500) for connecting to WiFi, [Proto Board TinyShield](https://tinycircuits.com/collections/proto-boards/products/proto-board-tinyshield) for adding on external sensors, and lastly the [DS18b20](https://www.adafruit.com/product/381?gclid=CjwKCAjwzMbLBRBzEiwAfFz4gXXOVZ71c3pl2pPJhgH1iXZA5AFAQqQFiNNHE4ydiYU3rq6vc56Y3xoCeTIQAvD_BwE) waterproof digital temperature sensor w/4.7k resistor.
 
-At some point I'll make a blog post on how I created this. Please feel free to use this software freely and reach out if you have any questions please don't hesitate to reach out!
+At some point I'll make a blog post on how I created this. Please feel free to use this software freely and reach out if you have any questions.
 
 ## Testing
 We use [rspec](http://rspec.info/documentation/3.5/rspec-rails/) for testing.
