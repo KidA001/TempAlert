@@ -9,7 +9,7 @@ describe SMS do
   let(:client) { double }
 
   describe '#send' do
-    let(:phone_number) { build(:subscriber).phone }
+    let(:phone_number) { build(:user).phone }
     let(:message) { 'hello' }
 
     it 'calls publish on Twilio client with correct params' do

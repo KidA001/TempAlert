@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170713034402) do
+ActiveRecord::Schema.define(version: 20180316180737) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -24,18 +24,27 @@ ActiveRecord::Schema.define(version: 20170713034402) do
     t.index ["temperature"], name: "index_records_on_temperature"
   end
 
-  create_table "subscribers", force: :cascade do |t|
+  create_table "subscriptions", force: :cascade do |t|
+    t.integer "type", null: false
+    t.boolean "sms_enabled", null: false
+    t.boolean "email_enabled", null: false
+    t.jsonb "metadata", default: {}, null: false
+    t.bigint "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_subscriptions_on_user_id"
+  end
+
+  create_table "users", force: :cascade do |t|
     t.string "name"
     t.string "email"
     t.string "phone"
-    t.integer "ideal_temperature"
-    t.jsonb "subscriptions", default: {}, null: false
     t.string "google_id"
     t.string "photo_url"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["google_id"], name: "index_subscribers_on_google_id"
-    t.index ["subscriptions"], name: "index_subscribers_on_subscriptions", using: :gin
+    t.index ["google_id"], name: "index_users_on_google_id"
   end
 
+  add_foreign_key "subscriptions", "users"
 end
