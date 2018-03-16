@@ -37,4 +37,46 @@ describe Subscription, type: :model do
       end
     end
   end
+
+  describe 'scopes' do
+    describe '#ideal_temp' do
+      let!(:subscription1) do
+        create(:subscription, :ideal_temperature, temperature: 100)
+      end
+
+      let!(:subscription2) do
+        create(:subscription, :ideal_temperature, temperature: 103)
+      end
+
+      let!(:subscription3) do
+        create(:subscription, :ideal_temperature, temperature: 105)
+      end
+
+      it 'returns ideal_temp subscriptions where the temp is <= provided temp' do
+        expect(described_class.ideal_temp(103)).to include(subscription1)
+        expect(described_class.ideal_temp(103)).to include(subscription2)
+        expect(described_class.ideal_temp(103)).not_to include(subscription3)
+      end
+    end
+
+    describe '#active' do
+      let!(:subscription1) do
+        create(:subscription, sms_enabled: true, email_enabled: true)
+      end
+
+      let!(:subscription2) do
+        create(:subscription, sms_enabled: true, email_enabled: true)
+      end
+
+      let!(:subscription3) do
+        create(:subscription, sms_enabled: false, email_enabled: false)
+      end
+
+      it 'returns subscriptions where email OR sms are true' do
+        expect(described_class.active).to include(subscription1)
+        expect(described_class.active).to include(subscription2)
+        expect(described_class.active).not_to include(subscription3)
+      end
+    end
+  end
 end

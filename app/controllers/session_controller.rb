@@ -12,13 +12,11 @@ class SessionController < ApplicationController
   private
 
   def find_or_create_user!
-    @subscriber = begin
-      Subscriber.find_by_google_id(@google_user.id) ||
-        Subscriber.create(create_subscriber_params)
-    end
+    @user = User.find_by_google_id(@google_user.id) ||
+            User.create(create_user_params)
   end
 
-  def create_subscriber_params
+  def create_user_params
     {
       name: @google_user.name,
       google_id: @google_user.id,
@@ -28,7 +26,7 @@ class SessionController < ApplicationController
   end
 
   def create_session!
-    session[:subscriber_id] = @subscriber.id
+    session[:user_id] = @user.id
     session[:expires_at] = 20.days.from_now
   end
 end

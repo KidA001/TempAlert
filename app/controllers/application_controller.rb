@@ -12,14 +12,14 @@ class ApplicationController < ActionController::Base
 
   def valid_session?
     (session[:expires_at] && session[:expires_at] > Time.current) &&
-      current_subscriber.present?
+      current_user.present?
   end
 
   def destroy_session!
     session.clear
   end
 
-  def current_subscriber
-    @current_subscriber ||= Subscriber.find_by_id(session[:subscriber_id])
+  def current_user
+    @current_user ||= User.find_by_id(session[:user_id])
   end
 end
