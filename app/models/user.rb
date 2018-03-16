@@ -6,4 +6,12 @@ class User < ApplicationRecord
   validates :email, presence: true
 
   has_many :subscriptions, dependent: :destroy
+
+  def subscription_for(type)
+    Subscription.where(
+      user: self,
+      type: type
+    ).first_or_initialize
+  end
+
 end

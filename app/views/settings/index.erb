@@ -4,7 +4,7 @@
       <div class='heading'>
         <div class="title">Settings</div>
         <div class='profile-photo'>
-          <img src="<%= @subscriber.photo_url %>" alt="Profile Photo">
+          <img src="<%= @current_user.photo_url %>" alt="Profile Photo">
         </div>
       </div>
       <hr class='header-hr' />
@@ -13,14 +13,14 @@
           <%= label_tag(:phone, class: 'block') do %>
             Phone Number
           <% end %>
-          <%= phone_field_tag("phone", @subscriber.phone, required: true, maxlength: 14, pattern: ".{14}", placeholder: "(###) ###-####", onkeyup: "phoneInput(event)") %>
+          <%= phone_field_tag("phone", @current_user.phone, required: true, maxlength: 14, pattern: ".{14}", placeholder: "(###) ###-####", onkeyup: "phoneInput(event)") %>
         </div>
         <hr>
         <div class="form-group item-fade selected">
           <%= label_tag(:email, class: 'block') do %>
             Email
           <% end %>
-          <%= email_field_tag("email", @subscriber.email, placeholder: 'e.g. you@email.com', required: true) %>
+          <%= email_field_tag("email", @current_user.email, placeholder: 'e.g. you@email.com', required: true) %>
         </div>
         <hr>
         <div class='notif'>
@@ -33,19 +33,19 @@
             <%= label_tag(:ideal_temperature) do %>
               Temperature
             <% end %>
-            <%= number_field_tag("ideal_temperature", @subscriber.ideal_temperature, placeholder: 'e.g. 102', min: 100, max: 105, required: true) %>
+            <%= number_field_tag("ideal_temperature[temp]", @ideal_temp_subscription.metadata['ideal_temperature'], placeholder: 'e.g. 102', min: 100, max: 105, required: true) %>
           </div>
           <div class="form-group">
             <%= label_tag(:sms) do %>
               SMS
             <% end %>
-            <%= check_box("ideal_temp[sms]", "disabled", { class: "js-switch", checked: @subscriber.sms?('ideal_temp'), id: "notif-toggle-checkbox" }, "true", "false") %>
+            <%= check_box("ideal_temperature[sms]", "disabled", { class: "js-switch", checked: @ideal_temp_subscription.sms_enabled, id: "notif-toggle-checkbox" }, "true", "false") %>
           </div>
           <div class="form-group">
             <%= label_tag(:email) do %>
               Email
             <% end %>
-            <%= check_box("ideal_temp[email]", "enabled", { class: "js-switch", checked: @subscriber.email?('ideal_temp'), id: "notif-toggle-checkbox" }, "true", "false") %>
+            <%= check_box("ideal_temperature[email]", "enabled", { class: "js-switch", checked: @ideal_temp_subscription.email_enabled, id: "notif-toggle-checkbox" }, "true", "false") %>
           </div>
         </div>
 
@@ -59,13 +59,13 @@
             <%= label_tag(:sms) do %>
               SMS
             <% end %>
-            <%= check_box("extended_use[sms]", "enabled", { class: "js-switch", checked: @subscriber.sms?('extended_use'), id: "notif-toggle-checkbox" }, "true", "false") %>
+            <%= check_box("extended_use[sms]", "enabled", { class: "js-switch", checked: @extended_use_subscription.sms_enabled, id: "notif-toggle-checkbox" }, "true", "false") %>
           </div>
           <div class="form-group">
             <%= label_tag(:email) do %>
               Email
             <% end %>
-            <%= check_box("extended_use[email]", "enabled", { class: "js-switch", checked: @subscriber.email?('extended_use'), id: "notif-toggle-checkbox" }, "true", "false") %>
+            <%= check_box("extended_use[email]", "enabled", { class: "js-switch", checked: @extended_use_subscription.email_enabled, id: "notif-toggle-checkbox" }, "true", "false") %>
           </div>
         </div>
         <div class="buttons">
