@@ -30,7 +30,9 @@ body {
 .card-container {
   display: flex;
   align-items: center;
-  height: 100vh;
+  @include media-breakpoint-up(lg) {
+    height: 100vh;
+  }
   justify-content: center;
 }
 
@@ -41,12 +43,11 @@ body {
   background: #3D6AA2;
 
   color: #fff;
-  padding: 40px;
+  padding: 20px;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  height: 100%;
   width: 100%;
   @include media-breakpoint-up(lg) {
     flex-direction: row;
@@ -61,7 +62,7 @@ body {
 }
 
 .alert {
-  height: 85px;
+  height: 40px;
   position: absolute;
   z-index: 1;
   width: 100%;
@@ -70,7 +71,7 @@ body {
 
 .alert-text {
   text-align: center;
-  font-size: 30px;
-  font-size: 30px;
+  font-size: 15px;
+  font-size: 15px;
   font-weight: 400;
 }

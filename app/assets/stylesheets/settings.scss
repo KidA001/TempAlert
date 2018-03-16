@@ -7,7 +7,6 @@
 // }
 
 .card-container.settings-container {
-  padding: 30px;
   @include media-breakpoint-up(lg) {
     align-items: flex-start;
   }
@@ -23,19 +22,12 @@
 }
 
 label {
-  font-size: 35px;
+  font-size: 17px;
   font-weight: 400;
   color: #515151;
   @include media-breakpoint-up(lg) {
     font-size: 25px;
     font-weight: 300;
-  }
-}
-
-.wat {
-  width: 600px;
-  @include media-breakpoint-up(lg) {
-    width: 100%;
   }
 }
 
@@ -49,9 +41,7 @@ label {
 }
 
 .title {
-  @include media-breakpoint-up(lg) {
-    font-size: 40px;
-  }
+  font-size: 40px;
 }
 
 .header-hr {
@@ -65,8 +55,8 @@ label {
 }
 
 .profile-photo img {
-  height: 100px;
-  width: 100px;
+  height: 50px;
+  width: 50px;
   border-radius: 50%;
   @include media-breakpoint-up(lg) {
     height: 75px;
@@ -75,9 +65,9 @@ label {
 }
 
 #email, #phone {
-  height: 60px;
-  width: 350px;
-  font-size: 30px;
+  height: 30px;
+  width: 125px;
+  font-size: 15px;
   border: none;
   color: #959393;
   @include media-breakpoint-up(lg) {
@@ -87,10 +77,16 @@ label {
   }
 }
 
+input#ideal_temperature_temp {
+  width: 80px;
+  margin-left: 15px;
+
+}
+
 #ideal_temperature {
-  height: 60px;
-  width: 110px;
-  font-size: 30px;
+  height: 30px;
+  width: 50px;
+  font-size: 15px;
   border: none;
   color: #959393;
   text-align: right;
@@ -117,9 +113,9 @@ label {
 }
 
 .notif-title {
-  font-size: 50px;
+  font-size: 25px;
   font-weight: 400;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
   @include media-breakpoint-up(lg) {
     font-size: 25px;
   }
@@ -143,8 +139,8 @@ label {
 }
 
 .settings-save-btn {
-  font-size: 40px;
-  width: 170px;
+  font-size: 20px;
+  width: 80px;
   @include media-breakpoint-up(lg) {
     font-size: 20px;
     width: 130px;
@@ -152,8 +148,8 @@ label {
 }
 
 .settings-back-btn {
-  font-size: 40px;
-  width: 170px;
+  font-size: 20px;
+  width: 80px;
   @include media-breakpoint-up(lg) {
     font-size: 20px;
     width: 130px;
@@ -166,6 +162,6 @@ label {
 }
 
 .notif-description {
-  font-size: 25px;
+  font-size: 17px;
   color: gray;
 }
