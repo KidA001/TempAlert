@@ -1,13 +1,15 @@
-class Notification::IdealTemp
-  attr_reader :temperature
+class Notification::ExtendedUse
+  include ActionView::Helpers::DateHelper
+  attr_reader :temperature, :time
   QUOTA = 6.hours
 
-  def initialize(temperature)
+  def initialize(temperature, time)
     @temperature = temperature
+    @time = time
   end
 
   def send_notif!
-    Subscription.ideal_temp(temperature).each do |sub|
+    Subscription.extended_use.active.each do |sub|
       next if exceeds_quota?(sub.user)
       set_quota!(sub.user)
       SMS.send(sub.user.phone, sms_body) if sub.sms_enabled
@@ -18,16 +20,15 @@ class Notification::IdealTemp
   private
 
   def sms_body
-    "✨Hot tub is at #{temperature.to_i}✨"
-  end
-
-
-  def email_body
-    " "
+    "Hot has been over #{temperature} for #{distance_of_time_in_words(time, Time.now)}"
   end
 
   def email_subject
-    sms_body
+    "Hot tub has been left on for #{distance_of_time_in_words(time, Time.now)}!"
+  end
+
+  def email_body
+    ' '
   end
 
   def key(user)
