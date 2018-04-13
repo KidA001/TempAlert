@@ -17,7 +17,7 @@ describe Record, type: :model do
 
     context 'when the latest record is over 10min old' do
       let!(:record) { create(:record, recorded_at: 11.minutes.ago) }
-      
+
       it 'returns nil' do
         expect(described_class.current).to be_nil
       end
@@ -28,7 +28,7 @@ describe Record, type: :model do
     let(:temp) { 100 }
     let(:hours) { 1 }
 
-    context 'when records meet min sample size and are above temp' do
+    context 'when records meet min sample size and are above specified temp' do
       let(:min_records) { Record::MIN_RECORDS_PER_HOUR }
       before { min_records.times { create(:record, temperature: temp) } }
 
@@ -41,7 +41,7 @@ describe Record, type: :model do
     context 'when records do not meet min sample size but are above temp' do
       let(:min_records) { Record::MIN_RECORDS_PER_HOUR - 1 }
       before { min_records.times { create(:record, temperature: temp) } }
-      
+
       it 'returns false' do
         result = described_class.above_temp_since?(temp, hours)
         expect(result).to eq(false)
