@@ -10,12 +10,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180316180737) do
+ActiveRecord::Schema.define(version: 20180413203549) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+  enable_extension "pgcrypto"
 
-  create_table "records", force: :cascade do |t|
+  create_table "records", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.float "temperature"
     t.datetime "recorded_at"
     t.datetime "created_at", null: false
@@ -24,18 +25,18 @@ ActiveRecord::Schema.define(version: 20180316180737) do
     t.index ["temperature"], name: "index_records_on_temperature"
   end
 
-  create_table "subscriptions", force: :cascade do |t|
+  create_table "subscriptions", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.integer "type", null: false
     t.boolean "sms_enabled", null: false
     t.boolean "email_enabled", null: false
     t.jsonb "metadata", default: {}, null: false
-    t.bigint "user_id", null: false
+    t.uuid "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_subscriptions_on_user_id"
   end
 
-  create_table "users", force: :cascade do |t|
+  create_table "users", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.string "name"
     t.string "email"
     t.string "phone"

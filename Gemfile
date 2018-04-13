@@ -20,6 +20,7 @@ gem 'switchery-rails'
 gem 'phone'
 gem 'newrelic_rpm'
 gem 'twilio-ruby'
+gem 'webdack-uuid_migration'
 
 group :development, :test do
   gem 'pry'
