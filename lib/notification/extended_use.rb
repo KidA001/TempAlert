@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Notification::ExtendedUse
   include ActionView::Helpers::DateHelper
   attr_reader :temperature, :time

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class API::ApiController < ActionController::API
   include ActionController::HttpAuthentication::Token::ControllerMethods
   before_action :authenticate!

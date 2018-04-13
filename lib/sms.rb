@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module SMS
   class InvalidPhoneNumber < StandardError; end
   FROM = '+15103691553'

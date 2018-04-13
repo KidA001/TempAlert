@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Google
   class User
     class ClientError < StandardError; end
