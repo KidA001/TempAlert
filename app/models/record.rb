@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Record < ApplicationRecord
   MIN_RECORDS_PER_HOUR = 10
   validates :temperature, :recorded_at, presence: true

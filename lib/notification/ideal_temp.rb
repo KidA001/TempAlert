@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Notification::IdealTemp
   attr_reader :temperature
   QUOTA = 6.hours

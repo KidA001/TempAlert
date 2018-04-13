@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Google
   module OAuth
     extend self

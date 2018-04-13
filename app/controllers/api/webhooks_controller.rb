@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class API::WebhooksController < API::ApiController
   
   def temp

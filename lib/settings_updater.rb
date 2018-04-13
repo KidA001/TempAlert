@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class SettingsUpdater
 
   def initialize(user, params)
