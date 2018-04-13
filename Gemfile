@@ -25,7 +25,7 @@ gem 'webdack-uuid_migration'
 group :development, :test do
   gem 'pry'
   gem 'awesome_print'
-  gem 'factory_girl_rails'
+  gem "factory_bot_rails"
   gem 'faker'
 end
 

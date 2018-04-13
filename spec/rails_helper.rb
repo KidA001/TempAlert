@@ -4,7 +4,7 @@ ENV['RAILS_ENV'] ||= 'test'
 require File.expand_path('../../config/environment', __FILE__)
 abort("The Rails environment is running in production mode!") if Rails.env.production?
 require 'rspec/rails'
-require 'factory_girl_rails'
+require 'factory_bot_rails'
 require 'shoulda-matchers'
 require 'sidekiq/testing'
 Sidekiq::Testing.inline!
@@ -22,5 +22,5 @@ RSpec.configure do |config|
   config.filter_rails_from_backtrace!
   config.color = true
   config.include Rack::Test::Methods
-  config.include FactoryGirl::Syntax::Methods
+  config.include FactoryBot::Syntax::Methods
 end
