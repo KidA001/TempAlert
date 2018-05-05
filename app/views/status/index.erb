@@ -14,12 +14,14 @@
         <div class="shrug">¯\_(ツ)_/¯</div>
       <% end %>
     </div>
-    <div class="time-of-day-icon">
-      <% if @daytime %>
-        <%= image_tag "day.png", class: "time-of-day-icon-image" %>
-      <% else %>
-        <%= image_tag "night.png", class: "time-of-day-icon-image" %>
-      <% end %>
-    </div>
+    <% if @current_record.present? %>
+      <div class="time-of-day-icon">
+        <% if @daytime %>
+          <%= image_tag "day.png", class: "time-of-day-icon-image" %>
+        <% else %>
+          <%= image_tag "night.png", class: "time-of-day-icon-image" %>
+        <% end %>
+      </div>
+    <% end %>
   </div>
 </div>
