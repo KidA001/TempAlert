@@ -31,7 +31,7 @@ void loop() {
   Serial.println(temperature);
   char temp[5];
   dtostrf(temperature,5,2,temp);
-  
+
   httpRequest(temp);
   delay(60000); //1min
 }
@@ -47,13 +47,22 @@ void httpRequest(String temp) {
     char c = client.read();
     Serial.write(c);
   }
-  String request = "POST /api/webhooks/temp?temperature=" + temp + " HTTP/1.1\r\n"
-                   "Authorization: Token " + authToken + "\r\n"
-                   "Host: hottub.somahouse.family\r\n"
-                   "Connection: close\r\n";
+
+  String body = "{ \"temperature\": " + temp + " }";
 
   if (client.connect(server, 80)) {
-    client.println(request);
+    Serial.println(F("Making HTTP Request"));
+
+    client.println("POST /api/webhooks/temp HTTP/1.1");
+    client.println("Authorization: Token " + authToken);
+    client.println("Host: " + host);
+    client.println("User-Agent: ArduinoWiFi/1.1");
+    client.println("Content-Type: application/json");
+    client.print("Content-Length: ");
+    client.println(body.length());
+    client.println();
+    client.println(body);
+    client.println("Connection: close");
     client.println();
   }
   else {
@@ -72,4 +81,3 @@ void wifiConnect() {
   }
   Serial.println("Connected to WiFi");
 }
-
