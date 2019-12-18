@@ -18,12 +18,11 @@ TempAlert is an application that receives temperature notifications from an outs
  - Instantiate rails secrets with `$ rails secrets`
  - Add your rails secrets with `$ rails secrets:edit` - you'll need the following:
    - `api_key` - Auth Key for _incoming_ webhooks to this server
-   - `sendgrid_api_key` - Sendgrid key for sending emails
    - `google_client_id` - Google Client ID for OAuth
    - `google_client_secret` - Google Client Secret for OAuth
    - `production_url` - the URL you plan to host the application from in `Production`
-   - `twillio_account_sid` - Twillio Account SID for sending SMS
-   - `twillio_auth_token` - Twillio Auth Token for sending SMS
+   - `lat_lon` - your local lat/lon to calculate sun rise/set
+   - `local_timezone` - your local timezone to calculate sun rise/set
  - Install gem dependencies: `$ bundle install`
  - Setup the database `$ rake db:setup`
  - Start the server with `rails s`
