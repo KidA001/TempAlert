@@ -6,10 +6,10 @@ describe Notification::IdealTemp do
   let!(:subscription) do
     create(
       :subscription,
-      :ideal_temperature,
+      type: :ideal_temperature,
       sms_enabled: sms,
       email_enabled: email,
-      temperature: temp
+      metadata: { ideal_temperature: temp }
     )
   end
 

@@ -3,7 +3,7 @@ ruby '2.4.2'
 
 gem 'rails', '~> 5.1.2'
 gem 'pg', '~> 0.18'
-gem 'puma', '~> 3.7'
+gem 'puma', '>= 3.12.2'
 gem 'sass-rails'
 gem 'uglifier'
 gem 'turbolinks'

@@ -8,7 +8,13 @@ describe Subscription, type: :model do
     it { should validate_uniqueness_of(:user).scoped_to(:type) }
 
     context 'when subscription is ideal_temperature' do
-      let(:subject) { build(:subscription, :ideal_temperature, temperature: 100) }
+      let(:subject) do
+        build(
+          :subscription,
+          type: :ideal_temperature,
+          metadata: { ideal_temperature: 100 }
+        )
+      end
 
       it 'validates temperature exists' do
         expect(subject).to be_valid
@@ -41,15 +47,27 @@ describe Subscription, type: :model do
   describe 'scopes' do
     describe '#ideal_temp' do
       let!(:subscription1) do
-        create(:subscription, :ideal_temperature, temperature: 100)
+        create(
+          :subscription,
+          type: :ideal_temperature,
+          metadata: { ideal_temperature: 100 }
+        )
       end
 
       let!(:subscription2) do
-        create(:subscription, :ideal_temperature, temperature: 103)
+        create(
+          :subscription,
+          type: :ideal_temperature,
+          metadata: { ideal_temperature: 103 }
+        )
       end
 
       let!(:subscription3) do
-        create(:subscription, :ideal_temperature, temperature: 105)
+        create(
+          :subscription,
+          type: :ideal_temperature,
+          metadata: { ideal_temperature: 105 }
+        )
       end
 
       it 'returns ideal_temp subscriptions where the temp is <= provided temp' do
