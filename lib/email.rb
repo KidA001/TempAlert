@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module Email
-  EMAIL_FROM = 'no-reply@somahouse.family'
+  EMAIL_FROM = 'no-reply@hummingbear.org'
 
   def self.send(to, subject, body)
     request = build_request(to, subject, body)
