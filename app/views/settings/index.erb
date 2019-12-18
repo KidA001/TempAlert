@@ -23,51 +23,6 @@
           <%= email_field_tag("email", @current_user.email, placeholder: 'e.g. you@email.com', required: true) %>
         </div>
         <hr>
-        <div class='notif'>
-          <div class='notif-heading'>
-            <div class='notif-title'>Ideal Temp Notif</div>
-            <div class='notif-description'>Receive a notification when the hot tub reaches your ideal temperature :)</div>
-          </div>
-          <hr>
-          <div class="form-group">
-            <%= label_tag(:ideal_temperature) do %>
-              Temperature
-            <% end %>
-            <%= number_field_tag("ideal_temperature[temp]", @ideal_temp_subscription.metadata['ideal_temperature'], placeholder: 'e.g. 102', min: 100, max: 105, required: true) %>
-          </div>
-          <div class="form-group">
-            <%= label_tag(:sms) do %>
-              SMS
-            <% end %>
-            <%= check_box("ideal_temperature[sms]", "disabled", { class: "js-switch", checked: @ideal_temp_subscription.sms_enabled, id: "notif-toggle-checkbox" }, "true", "false") %>
-          </div>
-          <div class="form-group">
-            <%= label_tag(:email) do %>
-              Email
-            <% end %>
-            <%= check_box("ideal_temperature[email]", "enabled", { class: "js-switch", checked: @ideal_temp_subscription.email_enabled, id: "notif-toggle-checkbox" }, "true", "false") %>
-          </div>
-        </div>
-
-        <div class='notif'>
-          <div class='notif-heading'>
-            <div class='notif-title'>Extended Use Notif</div>
-            <div class='notif-description'>Receive a notification when the hot tub has been left on for an extended period of time.</div>
-          </div>
-          <hr>
-          <div class="form-group">
-            <%= label_tag(:sms) do %>
-              SMS
-            <% end %>
-            <%= check_box("extended_use[sms]", "enabled", { class: "js-switch", checked: @extended_use_subscription.sms_enabled, id: "notif-toggle-checkbox" }, "true", "false") %>
-          </div>
-          <div class="form-group">
-            <%= label_tag(:email) do %>
-              Email
-            <% end %>
-            <%= check_box("extended_use[email]", "enabled", { class: "js-switch", checked: @extended_use_subscription.email_enabled, id: "notif-toggle-checkbox" }, "true", "false") %>
-          </div>
-        </div>
         <div class="buttons">
           <%= link_to "Back", root_path, class: "btn btn-info settings-back-btn" %>
           <%= submit_tag("Save", { class: 'btn btn-info settings-save-btn' }) %>
