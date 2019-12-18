@@ -195,6 +195,7 @@ GEM
       rspec-mocks (~> 3.9.0)
       rspec-support (~> 3.9.0)
     rspec-support (3.9.0)
+    ruby-sun-times (0.1.5)
     ruby_dep (1.5.0)
     ruby_http_client (3.3.0)
     sass-rails (6.0.0)
@@ -282,6 +283,7 @@ DEPENDENCIES
   rails (~> 5.1.2)
   redis
   rspec-rails
+  ruby-sun-times
   sass-rails
   sendgrid-ruby
   shoulda-matchers
